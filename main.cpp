@@ -46,7 +46,7 @@ int main()
 
   glMatrixMode(GL_MODELVIEW);
   gluLookAt(2,2,2,0,0,0,0,1,0);
-
+  glEnable(GL_DEPTH_TEST);
   bool quit=false;
   SDL_Event event;
   while(!quit)
@@ -61,7 +61,7 @@ int main()
           {
             case SDLK_ESCAPE : quit= true; break;
             case SDLK_w : glPolygonMode(GL_FRONT_AND_BACK,GL_LINE); break;
-            case SDLK_s : glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+            case SDLK_s : glPolygonMode(GL_FRONT_AND_BACK,GL_FILL); break;
           }
 
         break;
@@ -69,7 +69,7 @@ int main()
 
     }
 
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //drawTriangle();
     drawCube();
     SDL_GL_SwapWindow(window);
